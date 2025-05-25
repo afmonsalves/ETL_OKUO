@@ -1,0 +1,14 @@
+[project]
+name = "DS_assessment_AMS"
+version = "1.0"
+description = "ETL pipeline for supermarket data as a technical test for Okuo DS role."
+requires-python = ">=3.12"
+
+[tool.ruff]
+# PEP8-ish line length, plus Ruff defaults
+line-length = 88
+select = ["E", "F", "I", "ANN"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
