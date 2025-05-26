@@ -1,9 +1,9 @@
-from io import StringIO, BytesIO
-import pandas as pd
 import boto3
 from botocore.client import BaseClient
-
 from config import Settings, get_settings
+from io import StringIO, BytesIO
+import pandas as pd
+
 
 class S3Client:
     """

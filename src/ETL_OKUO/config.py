@@ -1,5 +1,6 @@
-from typing import Optional
 from pydantic_settings import BaseSettings
+from typing import Optional
+
 
 class Settings(BaseSettings):
     """Application settings, loaded from a .env file."""
