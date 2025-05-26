@@ -11,9 +11,14 @@ For an input dataset stored in an Amazon Simple Storage Web Service, you will ne
 - input_path (object key for the input data)
 - output_path (object key for the output data)
 
+## How to run
+
+- **Using Linux command line**: *uv run python src/ETL_OKUO/main.py*
+- It is also possible to execute the process using the **Lambda-Docker image**; for that, you will have to create and run the Docker image locally.
+
 ## output
 
-You will have a clean dataset that includes, for each recurrent user:
+You will have a clean dataset in AWS-s3 that includes, for each recurrent user:
 - The three products that are more frequently bought
 - The day of the week the user is most likely to go to the store
 - Number of times the client has bought that specific item
