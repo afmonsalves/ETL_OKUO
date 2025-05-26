@@ -1,4 +1,3 @@
-# Imports
 from config import get_settings
 from s3_client import S3Client
 import pandas as pd
@@ -62,5 +61,6 @@ df_rec = df_rec.groupby('usuario').head(3)
 
 # Upload the cleaned DataFrame to S3 in Parquet format
 client.upload_parquet(df_rec, client._output_path)
+
 # Print success message
 print("Clean data upload successful. DataFrame shape:", df_rec.shape)
