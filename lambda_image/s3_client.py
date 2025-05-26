@@ -16,11 +16,11 @@ class S3Client:
         """
         self._client: BaseClient = boto3.client(
             "s3",
-            aws_access_key_id='AKIA33UN72HYMQL7J7JP',
-            aws_secret_access_key='ORp5HDBfNAcJK9TpID9Tft4Sc+eRqWbrg7gtbwDd',
+            aws_access_key_id=<your key id>,
+            aws_secret_access_key=<your secret key>,
             region_name='us-west-2',
         )
-        self._bucket = 'assessment-86fc5eb8'
+        self._bucket = <bucket>
         self._input_path = 'raw-data/data.csv'
         self._output_path = 'cleaned-data/AMS569/data.parquet'
 
