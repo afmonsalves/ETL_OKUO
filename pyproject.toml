@@ -1,5 +1,5 @@
 [project]
-name = "DS_assessment_AMS"
+name = "ETL_OKUO"
 version = "1.0"
 description = "ETL pipeline for supermarket data as a technical test for Okuo DS role."
 requires-python = ">=3.12"
