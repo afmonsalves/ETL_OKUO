@@ -8,8 +8,8 @@ settings = get_settings()
 client = S3Client(settings)
 
 # Download the CSV into a DataFrame
-df = client.download_csv("raw-data/data.csv")
-print("✅ Download successful. DataFrame shape:", df.shape)
+df = client.download_csv(client._input_path)
+print("Data download successful. DataFrame shape:", df.shape)
 
 #fecha_compra to datetime
 df['fecha_compra'] = pd.to_datetime(df['fecha_compra'], format='%Y-%m-%d')
@@ -32,7 +32,6 @@ date_range = pd.date_range(start=df_temp['fecha_compra'].min()
                         , end=df_temp['fecha_compra'].max() - pd.DateOffset(days=num_dates))
 recurrentes = []
 for date in date_range:
-    print(f"Processing date: {date.strftime('%Y-%m-%d')}")
     temp = df_temp[(df_temp['fecha_compra'] >= date) 
                     & (df_temp['fecha_compra'] <= date + pd.DateOffset(days=num_dates))]
     #store the usuarios whose values_count is greater than min_compras
@@ -61,4 +60,7 @@ df_rec['probabilidad_compra'] = df_rec.groupby('usuario')['cantidad'].transform(
 #keep only the top 3 productos for each usuario
 df_rec = df_rec.groupby('usuario').head(3)
 
-print(df_rec.head())
+# Upload the cleaned DataFrame to S3 in Parquet format
+client.upload_parquet(df_rec, client._output_path)
+# Print success message
+print("Clean data upload successful. DataFrame shape:", df_rec.shape)
